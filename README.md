@@ -45,3 +45,7 @@ This project is licensed under the **MIT License** – because creative ideas ar
 
 🎉 **Stay bold, stay creative!** 🎭
 
+## 📸 Demo (1)
+![Funky Blog Preview](screenshots/screenshot1.png)
+## 📸 Demo (2)
+![Funky Blog Preview](screenshots/screenshot2.png)
