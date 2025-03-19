@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>Create New Post</title>
+    <style>
+        @keyframes formEntrance {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .funky-form {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            animation: formEntrance 0.6s ease-out;
+        }
+
+        .form-title {
+            color: #2c3e50;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #2c3e50;
+            transition: all 0.3s ease;
+        }
+
+        .form-control {
+            border: 2px solid #4ecdc4;
+            border-radius: 10px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 0 3px rgba(255,107,107,0.25);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #4ecdc4, #45b7af);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(78,205,196,0.3);
+        }
+    </style>
+</head>
+<body class="funky-form">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="form-container p-5 my-5">
+                    <h1 class="form-title text-center mb-4 animate__animated animate__fadeInDown">✍️ Create New Post</h1>
+                    
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endif %}
+                    
+                    {% if success %}
+                        <div class="alert alert-success">Post created successfully!</div>
+                    {% endif %}
+                    
+                    <form method="POST" class="animate__animated animate__fadeIn" action="{{ url_for('new_post') }}">
+                        <div class="mb-4">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" id="title" name="title" class="form-control animate__animated animate__fadeInLeft" required 
+                                   style="animation-delay: 0.2s">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="content" class="form-label">Content</label>
+                            <textarea id="content" name="content" class="form-control animate__animated animate__fadeInLeft" 
+                                rows="5" required style="animation-delay: 0.3s">
+                            </textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn animate__animated animate__fadeInUp" 
+                                style="animation-delay: 0.4s">
+                            🚀 Publish Post
+                        </button>
+                    </form>
+                    
+                    <a href="{{ url_for('home') }}" class="btn btn-secondary mt-3">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
